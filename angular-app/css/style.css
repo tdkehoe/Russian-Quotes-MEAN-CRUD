@@ -1,0 +1,57 @@
+h1, h2{
+  font-family: 'Expletus Sans',  'Russo One', 'Trade Winds', 'Atomic Age', 'Tangerine',  sans-serif;
+
+}
+
+h1 {
+    text-shadow: 4px 4px 4px #aaa;
+}
+
+body {
+  font-family: 'Expletus Sans', 'Cinzel Decorative', 'Russo One', 'Trade Winds', 'Atomic Age', 'Tangerine',  sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #ADD8E6;
+}
+
+.mean {
+  width: 640px
+}
+
+.audrey {
+  padding-left: 50px
+}
+
+.quoteBox {
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  width: 640px;
+  padding: 10px
+}
+
+.quoteText, .quoteAuthor {
+  font-family: 'Cinzel Decorative', 'Trade Winds', 'Russo One', 'Atomic Age', 'Tangerine',  sans-serif;
+}
+
+.quoteAuthor, .commentAuthor {
+  font-style: italic;
+  float: right
+}
+
+.commentBox {
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  width: 480px;
+  margin-left: 60px;
+  padding: 10px
+}
+
+.commentText, .commentAuthor {
+  font-size: smaller;
+  /*font-family: 'Cinzel Decorative', 'Trade Winds', 'Russo One', 'Atomic Age', 'Tangerine',  sans-serif;*/
+}

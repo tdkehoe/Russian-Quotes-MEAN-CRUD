@@ -1,0 +1,52 @@
+<p class="mean">A MEAN stack CRUD database, using MongoDB, Express, Angular, and Node. <br> Routes: INDEX, NEW, SHOW, EDIT, UPDATE, DESTROY. The Angular routes go to corresponding Express routes.</p>
+
+<img class="audrey" ng-src="http://blog.syracuse.com/shelflife/2008/09/anna.jpg" alt="Audrey Hepburn in 'War and Peace' (1955)" />
+
+
+<h2>INDEX, DESTROY</h2>
+
+<a href="/#/new"><button>Add a new quote</button></a>
+
+<div ng-repeat="quote in quotes">
+  <div class="quoteBox">
+    <div class="quoteText">
+      <!-- <a ng-href="{{'api/swords/' + sword._id}}">{{sword.swordName}}</a></span> -->
+      <a ng-href="/#/{{quote._id}}">{{quote.quoteText}}</a></div> <!--SHOW-->
+    <div class="quoteAuthor">-- {{quote.quoteAuthor}}<br>
+
+      <a ng-href="/#/{{quote._id}}/edit"><button>Edit Quote</button></a>
+
+      <button ng-click="deleteQuote(quote)">Delete Quote</button>
+    </div>
+
+    <span ng-click="showComments = !showComments">
+      <ng-pluralize count="post.comments.length"
+      when="{'0': '',
+             'one': '1 comment',
+             'other': '{} comments',
+             'NaN': ''}">
+      </ng-pluralize><br>
+    </span>
+
+    <!-- <td>at {{post.timestamp | date: 'h:mm a'}}</td> -->
+    <!-- <td><button ng-click="upVote()" ng-init="$storage.posts.count = 0">Up</button><button ng-click="downVote()">Down</button><span>count: {{post.count}}</span></td> -->
+    <span>Likes: {{quote.count}}</span></span>
+    <span><button ng-click="quote.count = quote.count + 1" ng-init="quote.count = 0">Up</button>
+    <button ng-click="quote.count = quote.count - 1">Down</button>
+
+    <form ng-submit="newComment(quote)">
+      <input type="text" name="commentText" ng-model="quote.newComment.commentText">
+      <input type="text" name="commentAuthor" ng-model="quote.newComment.commentAuthor">
+      <input type="submit" value="Submit Comment"></input>
+    </form>
+
+    <div ng-repeat="comment in quote.comments" ng-show="true">
+      <div class="commentBox">
+        <span class='commentText'>{{comment.commentText}}</span> <span class='commentAuthor'>--{{comment.commentAuthor}}</span>
+      </div>
+      <br>
+    </div>
+
+  </div>
+  <p>
+</div>
