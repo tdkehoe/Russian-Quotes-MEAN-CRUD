@@ -27,6 +27,22 @@ button:hover {
   padding-left: 50px
 }
 
+.addQuoteButton {
+  /*background-color: #ADD8E6;*/
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  color: black;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.addQuoteButton:hover {
+  background: #3cb0fd;
+  text-decoration: none;
+}
+
 .quoteBox {
   border: 1px solid #d3d3d3;
   border-radius: 5px;
@@ -54,4 +70,16 @@ button:hover {
 .commentText, .commentAuthor {
   font-size: smaller;
   /*font-family: 'Cinzel Decorative', 'Trade Winds', 'Russo One', 'Atomic Age', 'Tangerine',  sans-serif;*/
+}
+
+.editField {
+  width: 400px
+}
+
+.edit {
+  font-style: italic;
+}
+
+.tooShort {
+  color: red
 }

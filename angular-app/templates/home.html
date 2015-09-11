@@ -4,7 +4,9 @@
 
 <h2>INDEX, DESTROY</h2>
 
-<a href="/#/new"><button>Add a new quote</button></a>
+<a href="/#/new"><button class="addQuoteButton">Add a new quote</button></a>
+
+<p></p>
 
 <div ng-repeat="quote in quotes">
   <div class="quoteBox">
@@ -41,7 +43,7 @@
       <input type="submit" value="Submit Comment"></input>
     </form>
 
-    <div ng-repeat="comment in quote.comments" ng-show="true" class=comment>
+    <div ng-repeat="comment in quote.comments" class=comment>
       <table>
         <tr>
           <td width=50>

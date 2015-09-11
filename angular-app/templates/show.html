@@ -3,8 +3,43 @@
 <h2>SHOW</h2>
 
 <table>
-<tr><td style="font-style: italic">Quote:</td><td>{{oneQuote.quoteText}}</td></tr>
-<tr><td style="font-style: italic">Author:</td><td>{{oneQuote.quoteAuthor}}</td></tr>
+  <tr><td style="font-style: italic">Quote:</td><td>{{oneQuote.quoteText}}</td></tr>
+  <tr><td style="font-style: italic">Author:</td><td>{{oneQuote.quoteAuthor}}</td></tr>
+
+  <tr ng-show="oneQuote.comments">
+    <td style="font-style: italic">Comments:</td>
+    <td>
+      <table ng-repeat="comment in oneQuote.comments" class=comment>
+        <tr>
+          <td width=400 class=commentBox>
+            <span class='commentText'>{{comment.commentText}}</span> <span class='commentAuthor'>--{{comment.commentAuthor}}</span>
+          </td>
+          <td width=10>
+            &nbsp;
+          </td>
+          <td>
+            <form ng-submit="deleteComment(oneQuote, comment)">
+              <input type="submit" value="Delete Comment"></input>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
 </table>
+
+<span>Likes: {{oneQuote.likes}}</span></span>
+<form ng-submit="upLike(oneQuote)">
+  <input type="submit" value="Up"<</input>
+</form>
+<form ng-submit="downLike(oneQuote)">
+  <input type="submit" value="Down"<</input>
+</form>
+
+<form ng-submit="newComment(oneQuote)">
+  <input type="text" name="commentText" ng-model="oneQuote.newComment.commentText">
+  <input type="text" name="commentAuthor" ng-model="oneQuote.newComment.commentAuthor">
+  <input type="submit" value="Submit Comment"></input>
+</form>
 
 <a ng-href="/#/{{oneQuote._id}}/edit"><h3><i>Edit Quote</i></h3></a>

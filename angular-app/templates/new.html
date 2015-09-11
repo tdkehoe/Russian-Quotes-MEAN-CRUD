@@ -7,15 +7,15 @@
 <p><a target="_blank" ng-href="http://www.goodreads.com/quotes/tag/russian-literature">More Russian literature quotes</a></p>
 <p><a target="_blank" ng-href="http://thinkexist.com/quotes/top/nationality/russian/occupation/author/">More Russian literature quotes</a></p>
 
-<form ng-submit="addQuote()" class='addQuote' name="newQuote">
+<form ng-submit="addQuote()" name="newQuote">
   <label for="quoteText">Quote: </label>
-    <input type="text" name="quoteText" ng-model="quote.quoteText" ng-minlength=25 ng-minlength=1000 required></label><br>
+    <input type="text" name="quoteText" ng-model="quote.quoteText" ng-minlength=25 ng-minlength=1000 class="editField" required></label><br>
     <label for="quoteAuthor">Author: </label>
-    <input type="text" name="quoteAuthor" ng-model="quote.quoteAuthor" required></label><br>
+    <input type="text" name="quoteAuthor" ng-model="quote.quoteAuthor" class="editField" required></label><br>
   <input type="submit" value="Add Quote"></input>
 </form>
 
-<div role="alert">
+<div role="alert" class="tooShort">
   <span class="error" ng-show="newQuote.quoteText.$error.minlength">
     Too short! This is Russian literature, not Raymond Carver!</span>
   <span class="error" ng-show="newQuote.quoteText.$error.maxlength">

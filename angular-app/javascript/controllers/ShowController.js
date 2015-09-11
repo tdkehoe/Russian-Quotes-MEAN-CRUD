@@ -1,20 +1,11 @@
-app.controller('HomeController', ['$scope', '$http', '$location', '$route', '$routeParams', function($scope, $http, $location, $route, $routeParams){
-  $scope.message = "Connected";
-  $http.get('http://localhost:8080/api/quotes/').then(function(response) { // INDEX
-    $scope.quotes = response.data;
+app.controller('ShowController', ['$scope', '$http', '$location', '$route', '$routeParams', function($scope, $http, $location, $route, $routeParams){
+  console.log("Show controller");
+  $http.get('http://localhost:8080/api/quotes/' + $routeParams.id).then(function(response) { // SHOW
+    $scope.oneQuote = response.data;
+    console.log(response.data);
   }, function(response) {
     console.log("Invalid URL");
   });
-
-  $scope.deleteQuote = function(quote) { // DESTROY
-    console.log("Deleting quote!");
-    console.log(quote._id);
-    $http.delete('http://localhost:8080/api/quotes/' + quote._id).then(function(response){
-      $route.reload();
-    }, function(response) {
-      console.log("Failed to reload page.");
-    });
-  }
 
   $scope.upLike = function(quote) {
     console.log("Liked!");
@@ -54,7 +45,6 @@ app.controller('HomeController', ['$scope', '$http', '$location', '$route', '$ro
     quote.newComment.commentText = null; // needed to prevent autofilling fields
     quote.comments = comments; // saves new comment locally
     $http.put('http://localhost:8080/api/quotes/' + quote._id, quote).then(function(response) { // UPDATE
-      $location.path( "/" );
       console.log("Comment added.");
     }, function(response) {
       console.log("Invalid URL");
@@ -62,14 +52,15 @@ app.controller('HomeController', ['$scope', '$http', '$location', '$route', '$ro
   }; // closes newComment
 
   $scope.deleteComment = function(quote, comment) {
+    console.log("Deleting comment.")
+    console.log(comment);
+    console.log(quote);
     var index = quote.comments.indexOf(comment);
     quote.comments.splice(index, 1);
     $http.put('http://localhost:8080/api/quotes/' + quote._id, quote).then(function(response) { // UPDATE
-      $location.path( "/" );
       console.log("Comment deleted.");
     }, function(response) {
       console.log("Invalid URL");
     });
   } // closes deleteComment
-
 }]);
