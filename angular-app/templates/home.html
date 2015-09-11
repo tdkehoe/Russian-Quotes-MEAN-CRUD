@@ -2,7 +2,6 @@
 
 <img class="audrey" ng-src="http://blog.syracuse.com/shelflife/2008/09/anna.jpg" alt="Audrey Hepburn in 'War and Peace' (1955)" />
 
-
 <h2>INDEX, DESTROY</h2>
 
 <a href="/#/new"><button>Add a new quote</button></a>
@@ -28,11 +27,13 @@
       </ng-pluralize><br>
     </span>
 
-    <!-- <td>at {{post.timestamp | date: 'h:mm a'}}</td> -->
-    <!-- <td><button ng-click="upVote()" ng-init="$storage.posts.count = 0">Up</button><button ng-click="downVote()">Down</button><span>count: {{post.count}}</span></td> -->
-    <span>Likes: {{quote.count}}</span></span>
-    <span><button ng-click="quote.count = quote.count + 1" ng-init="quote.count = 0">Up</button>
-    <button ng-click="quote.count = quote.count - 1">Down</button>
+    <span>Likes: {{quote.likes}}</span></span>
+    <form ng-submit="upLike(quote)">
+      <input type="submit" value="Up"<</input>
+    </form>
+    <form ng-submit="downLike(quote)">
+      <input type="submit" value="Down"<</input>
+    </form>
 
     <form ng-submit="newComment(quote)">
       <input type="text" name="commentText" ng-model="quote.newComment.commentText">
@@ -40,11 +41,26 @@
       <input type="submit" value="Submit Comment"></input>
     </form>
 
-    <div ng-repeat="comment in quote.comments" ng-show="true">
-      <div class="commentBox">
-        <span class='commentText'>{{comment.commentText}}</span> <span class='commentAuthor'>--{{comment.commentAuthor}}</span>
-      </div>
-      <br>
+    <div ng-repeat="comment in quote.comments" ng-show="true" class=comment>
+      <table>
+        <tr>
+          <td width=50>
+            &nbsp;
+          </td>
+          <td width=400 class=commentBox>
+            <span class='commentText'>{{comment.commentText}}</span> <span class='commentAuthor'>--{{comment.commentAuthor}}</span>
+          </td>
+          <td width=10>
+            &nbsp;
+          </td>
+          <td>
+            <form ng-submit="deleteComment(quote, comment)">
+              <input type="submit" value="Delete Comment"></input>
+            </form>
+          </td>
+
+        </tr>
+      </table>
     </div>
 
   </div>
